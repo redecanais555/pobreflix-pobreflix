@@ -1,0 +1,82 @@
+ body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(to top, rgb(43 105 183, 1) 0%, rgb(31 76 132 / 65%) 50%);
+        color: #333;
+        background-color: #22292f;
+    }
+    header {
+        text-align: center;
+        padding: 15px;
+        background: #2f353a;
+    }
+    article {
+        max-width: 800px;
+        margin: auto;
+        padding: 0 15px 35px;
+        color: #fff;
+    }
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 1px 2px #000;
+    }
+    footer {
+        background: linear-gradient(180deg, rgb(0 0 0 / 18%) 0%, rgba(0, 0, 0, 0) 100%);
+        border-top: solid 2px rgb(23, 89, 104);
+        text-align: center;
+        color: #fff;
+        padding: 15px;
+        font-size: small;
+    }
+    .buttons {
+        margin: 10%;
+        text-align: center;
+    }
+
+    .btn-hover {
+        width: 300px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+        margin: 20px;
+        height: 55px;
+        text-align:center;
+        border: none;
+        background-size: 300% 100%;
+
+        border-radius: 50px;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:hover {
+        background-position: 100% 0;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .btn-hover:focus {
+        outline: none;
+    }
+    .btn-hover.color-9 {
+        background-image: linear-gradient(to right, #007aff, #007aff, #007aff, #007aff);
+        box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px auto;
+    }
+    </style>
