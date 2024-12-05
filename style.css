@@ -18,6 +18,17 @@
         color: #fff;
     }
 
+ #invisible-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent; /* Invisível */
+      z-index: 9999; /* Sempre no topo */
+      cursor: pointer;
+    }
+
     img{
         max-width: 100%;
         height: auto;
