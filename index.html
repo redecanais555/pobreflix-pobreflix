@@ -92,40 +92,52 @@
     <div id="invisible-layer"></div> <!-- Barreira invisível -->
 
   <script>
-    // Função para abrir o link e remover a barreira
-    function openAndDetach() {
-      // URL a ser aberta
-      const url = "https://bit.ly/3D1cVOt";
+  const url = "https://s.shopee.com.br/9f2l2omepZ";
+  const expirationDays = 2;
 
-      // Abrir nova aba/instância diretamente com o URL, mas com tamanho bem pequeno
-      const newWindow = window.open(url, "_blank", "width=1,height=1,left=" + (window.innerWidth - 1) + ",top=0");
+  function openAndDetach() {
+    const currentTime = new Date().getTime();
+    const expirationTime = localStorage.getItem("linkOpened");
 
-        // Opcional: simular comportamento de instância separada
-        newWindow.blur(); // Remove o foco da nova aba
-        window.focus(); // Retorna o foco para a janela original
-
-        // Aguardar o carregamento da página antes de posicionar a janela atrás
-        setTimeout(() => {
-          // Tentar colocar a janela nova atrás da principal
-          newWindow.blur(); // Remove o foco da nova janela
-          window.focus(); // Coloca a janela principal em foco
-
-          // Depois de um tempo, mover a janela para o canto superior direito
-          // (já foi posicionada lá com left=window.innerWidth-1, top=0)
-          newWindow.moveTo(window.innerWidth - 1, 0);
-
-          // Simulação de minimização (mover para fora da tela)
-          newWindow.moveTo(window.innerWidth + 500, window.innerHeight + 500);
-        }, 1000); // Atraso de 1 segundo (ajuste conforme necessário)
-
-      // Remover a camada invisível após o clique
+    if (expirationTime && currentTime < parseInt(expirationTime)) {
       const layer = document.getElementById("invisible-layer");
-      if (layer) layer.remove();
+      if (layer) {
+        layer.style.pointerEvents = "none";
+        layer.removeEventListener("click", openAndDetach);
+      }
+      return;
     }
 
-    // Adicionar o evento de clique à barreira invisível
-    document.getElementById("invisible-layer").addEventListener("click", openAndDetach);
-      window.focus()
-  </script>
+    const newWindow = window.open(
+      url,
+      "_blank",
+      "width=1,height=1,left=" + (window.innerWidth - 1) + ",top=0"
+    );
+
+    newWindow.blur();
+    window.focus();
+
+    const expireIn = currentTime + expirationDays * 24 * 60 * 60 * 1000;
+    localStorage.setItem("linkOpened", expireIn.toString());
+
+    setTimeout(() => {
+      newWindow.moveTo(window.innerWidth + 500, window.innerHeight + 500);
+    }, 1000);
+
+    const layer = document.getElementById("invisible-layer");
+    if (layer) {
+      layer.remove();
+    }
+  }
+
+  const layer = document.getElementById("invisible-layer");
+  if (layer) {
+    if (localStorage.getItem("linkOpened")) {
+      layer.style.pointerEvents = "none";
+    } else {
+      layer.addEventListener("click", openAndDetach);
+    }
+  }
+</script>
 </body>
 </html>
